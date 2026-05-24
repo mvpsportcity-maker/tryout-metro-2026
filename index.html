@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inscripción Tryout — Panama Metro Baseball Club</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+--navy: #0a1628;
+--navy-mid: #112240;
+--navy-light: #1a3a6b;
+--gold: #c9a84c;
+--gold-light: #e8c97a;
+--red: #c0392b;
+--white: #f5f7fa;
+--gray: #8899aa;
+--success: #27ae60;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+background-color: var(--navy);
+font-family: 'Barlow', sans-serif;
+color: var(--white);
+min-height: 100vh;
+background-image:
+radial-gradient(ellipse at 20% 0%, rgba(26,58,107,0.6) 0%, transparent 60%),
+radial-gradient(ellipse at 80% 100%, rgba(201,168,76,0.08) 0%, transparent 50%);
+}
+.hero { text-align: center; padding: 48px 24px 32px; position: relative; overflow: hidden; }
+.hero::before {
+content: ''; position: absolute; inset: 0;
+background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+pointer-events: none;
+}
+.badge {
+display: inline-block; background: linear-gradient(135deg, var(--gold), var(--gold-light));
+color: var(--navy); font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+font-size: 11px; letter-spacing: 3px; text-transform: uppercase; padding: 6px 20px;
+border-radius: 2px; margin-bottom: 20px;
+}
+.hero h1 {
+font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+font-size: clamp(36px, 8vw, 72px); line-height: 0.95; text-transform: uppercase;
+letter-spacing: -1px; margin-bottom: 12px;
+}
+.hero h1 span { display: block; color: var(--gold); }
+.hero p { color: var(--gray); font-size: 15px; max-width: 420px; margin: 0 auto 28px; line-height: 1.6; }
+.divider { width: 60px; height: 3px; background: linear-gradient(90deg, var(--gold), transparent); margin: 0 auto 32px; }
+.form-wrap { max-width: 600px; margin: 0 auto; padding: 0 20px 60px; }
+.form-card {
+background: var(--navy-mid); border: 1px solid rgba(201,168,76,0.15);
+border-radius: 12px; padding: 36px 32px; position: relative; overflow: hidden;
+}
+.form-card::before {
+content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+background: linear-gradient(90deg, var(--gold), var(--gold-light), transparent);
+}
+.section-title {
+font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11px;
+letter-spacing: 3px; text-transform: uppercase; color: var(--gold);
+margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+}
+.section-title::after { content: ''; flex: 1; height: 1px; background: rgba(201,168,76,0.2); }
+.field-group { margin-bottom: 28px; }
+.field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 480px) {
+.field-grid { grid-template-columns: 1fr; }
+.form-card { padding: 28px 20px; }
+}
+label {
+display: block; font-size: 12px; font-weight: 600; letter-spacing: 1px;
+text-transform: uppercase; color: var(--gray); margin-bottom: 8px;
+}
+label span.req { color: var(--gold); margin-left: 2px; }
+input, select, textarea {
+width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+border-radius: 8px; padding: 13px 16px; color: var(--white); font-family: 'Barlow', sans-serif;
+font-size: 15px; transition: border-color 0.2s, background 0.2s; outline: none;
+appearance: none; -webkit-appearance: none;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--gold); background: rgba(201,168,76,0.06); }
+input::placeholder { color: rgba(255,255,255,0.25); }
+select {
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238899aa' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; cursor: pointer;
+}
+select option { background: var(--navy-mid); color: var(--white); }
+.radio-group { display: flex; gap: 12px; flex-wrap: wrap; }
+.radio-option { flex: 1; min-width: 120px; }
+.radio-option input[type="radio"] { display: none; }
+.radio-option label {
+display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 16px;
+border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; cursor: pointer; transition: all 0.2s;
+font-size: 13px; text-transform: none; letter-spacing: 0; font-weight: 500; color: var(--gray); margin: 0;
+}
+.radio-option input[type="radio"]:checked + label { border-color: var(--gold); background: rgba(201,168,76,0.1); color: var(--gold); }
+.submit-btn {
+width: 100%; padding: 18px; background: linear-gradient(135deg, var(--gold), var(--gold-light));
+color: var(--navy); border: none; border-radius: 8px; font-family: 'Barlow Condensed', sans-serif;
+font-weight: 900; font-size: 18px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+transition: transform 0.15s, box-shadow 0.15s, opacity 0.2s; margin-top: 8px; position: relative; overflow: hidden;
+}
+.submit-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.35); }
+.submit-btn:active:not(:disabled) { transform: translateY(0); }
+.submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.submit-btn .spinner {
+display: none; width: 20px; height: 20px; border: 3px solid rgba(10,22,40,0.3);
+border-top-color: var(--navy); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.success-screen { display: none; text-align: center; padding: 40px 20px; }
+.success-icon {
+width: 72px; height: 72px; background: linear-gradient(135deg, var(--success), #2ecc71);
+border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 32px;
+}
+.success-screen h2 { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 32px; text-transform: uppercase; margin-bottom: 12px; }
+.success-screen p { color: var(--gray); font-size: 15px; line-height: 1.6; max-width: 360px; margin: 0 auto; }
+.success-screen p strong { color: var(--gold); }
+.id-card {
+margin: 28px auto 8px; max-width: 360px;
+background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.04));
+border: 1px solid rgba(201,168,76,0.4); border-radius: 12px; padding: 22px 20px;
+}
+.id-card .id-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.id-card .id-number { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 46px; letter-spacing: 6px; color: var(--white); line-height: 1; }
+.id-reminder {
+margin: 18px auto 0; max-width: 360px; background: rgba(192,57,43,0.12);
+border: 1px solid rgba(192,57,43,0.35); border-radius: 10px; padding: 14px 16px;
+font-size: 13px; line-height: 1.6; color: var(--white);
+}
+.id-reminder strong { color: var(--gold-light); }
+.error-msg {
+display: none; background: rgba(192,57,43,0.15); border: 1px solid rgba(192,57,43,0.4);
+border-radius: 8px; padding: 14px 16px; font-size: 14px; color: #e74c3c; margin-top: 16px; text-align: center;
+}
+.footer { text-align: center; padding: 20px; color: rgba(136,153,170,0.5); font-size: 12px; letter-spacing: 1px; }
+.footer strong { color: var(--gold); opacity: 0.7; }
+.field-note { font-size: 11px; color: var(--gray); margin-top: 6px; opacity: 0.7; }
+</style>
+</head>
+<body>
+<div class="hero">
+<div class="badge">⚾ Panama Metro Baseball Club</div>
+<img src="logo.jpg" alt="Panama Metro Baseball Club" style="height:110px;width:auto;margin:0 auto 16px;display:block;filter:drop-shadow(0 4px 18px rgba(192,57,43,0.35));">
+<h1>Tryout<span>2026</span></h1>
+<p>Completa el formulario para inscribir a tu hijo en el proceso de selección. Todos los campos son obligatorios.</p>
+<div class="divider"></div>
+</div>
+
+<div class="form-wrap">
+<div class="form-card">
+
+<div class="success-screen" id="successScreen">
+<div class="success-icon">✓</div>
+<h2>¡Inscripción Enviada!</h2>
+<p>Hemos recibido los datos de <strong id="successName"></strong>. Estaremos confirmando los detalles de pago por WhatsApp al número registrado.</p>
+<div class="id-card">
+<div class="id-label">Número de identificación</div>
+<div class="id-number" id="successId">------</div>
+</div>
+<div class="id-reminder">
+📎 <strong>Importante:</strong> anota este número y <strong>anéxalo al comprobante de pago</strong> cuando lo envíes por WhatsApp. Es tu identificador único de inscripción.
+</div>
+<p style="margin-top:20px;font-size:13px;">Te enviamos un correo de confirmación a <strong id="successEmail"></strong> con la fecha de tu tryout.</p>
+</div>
+
+<form id="tryoutForm">
+<div class="section-title">Datos del jugador</div>
+<div class="field-group">
+<div class="field-grid">
+<div>
+<label>Nombre del jugador <span class="req">*</span></label>
+<input type="text" id="nombre" placeholder="Nombre completo" required>
+</div>
+<div>
+<label>Fecha de nacimiento <span class="req">*</span></label>
+<input type="date" id="fechaNacimiento" required>
+</div>
+</div>
+</div>
+
+<div class="field-group">
+<label>Número de cédula o pasaporte del atleta <span class="req">*</span></label>
+<input type="text" id="cedula" placeholder="Ej. 8-123-456 o pasaporte" required>
+<p class="field-note">Documento de identidad del jugador (cédula panameña o pasaporte).</p>
+</div>
+
+<div class="field-group">
+<label>Categoría <span class="req">*</span></label>
+<select id="categoria" required>
+<option value="" disabled selected>Selecciona la categoría</option>
+<option value="Pre BimBim (4-7 años)">Pre BimBim — 4 a 7 años</option>
+<option value="BimBim (8 años)">BimBim — 8 años</option>
+<option value="PreInfantil (9-10 años)">PreInfantil — 9 a 10 años</option>
+<option value="Infantil (11-12 años)">Infantil — 11 a 12 años</option>
+<option value="PrePony (13-14 años)">PrePony — 13 a 14 años</option>
+<option value="Pony (15-17 años)">Pony — 15 a 17 años</option>
+<option value="Juvenil (18-20 años)">Juvenil — 18 a 20 años</option>
+</select>
+</div>
+
+<div class="field-group">
+<label>Posición que juega <span class="req">*</span></label>
+<select id="posicion" required>
+<option value="" disabled selected>Selecciona una posición</option>
+<option value="Pitcher">Pitcher</option>
+<option value="Catcher">Catcher</option>
+<option value="Primera base">Primera base</option>
+<option value="Segunda base">Segunda base</option>
+<option value="Tercera base">Tercera base</option>
+<option value="Shortstop">Shortstop</option>
+<option value="Jardinero izquierdo">Jardinero izquierdo</option>
+<option value="Jardinero central">Jardinero central</option>
+<option value="Jardinero derecho">Jardinero derecho</option>
+<option value="Múltiples posiciones">Múltiples posiciones</option>
+<option value="Sin posición definida">Sin posición definida</option>
+</select>
+</div>
+
+<div class="field-group">
+<label>¿Tiene experiencia previa en béisbol? <span class="req">*</span></label>
+<div class="radio-group">
+<div class="radio-option">
+<input type="radio" name="experiencia" id="expSi" value="Sí" required>
+<label for="expSi">⚾ Sí</label>
+</div>
+<div class="radio-option">
+<input type="radio" name="experiencia" id="expNo" value="No">
+<label for="expNo">🆕 No, es nuevo</label>
+</div>
+</div>
+</div>
+
+<div class="section-title" style="margin-top:8px;">Datos del padre / madre / tutor</div>
+<div class="field-group">
+<label>Nombre completo <span class="req">*</span></label>
+<input type="text" id="tutor" placeholder="Nombre del responsable" required>
+</div>
+
+<div class="field-group">
+<div class="field-grid">
+<div>
+<label>Teléfono / WhatsApp <span class="req">*</span></label>
+<input type="tel" id="telefono" placeholder="+507 6000-0000" required>
+<p class="field-note">Usaremos este número para confirmar pago y detalles.</p>
+</div>
+<div>
+<label>Correo electrónico <span class="req">*</span></label>
+<input type="email" id="email" placeholder="correo@email.com" required>
+</div>
+</div>
+</div>
+
+<div style="background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.25);border-radius:10px;padding:22px 20px;margin-bottom:24px;">
+<div class="section-title" style="margin-bottom:14px;">Información de pago</div>
+<p style="font-size:13px;color:#e8c97a;font-weight:700;margin-bottom:14px;">⚠️ El costo del tryout es de <span style="font-size:17px;">$25.00</span> — debe cancelarse <u>antes del día del evento</u>.</p>
+<div style="font-size:13px;color:var(--gray);line-height:1.9;">
+<p style="margin-bottom:6px;"><strong style="color:var(--white);">Opción 1 — ACH / Transferencia bancaria:</strong></p>
+<p>MVP Sport City<br>Cuenta Corriente · Banco General<br>
+<strong style="color:var(--white);letter-spacing:1px;font-size:15px;">0318011128013</strong></p>
+<p style="margin-top:10px;">Enviar comprobante al WhatsApp:<br>
+<strong style="color:var(--gold);font-size:15px;">📲 6997-9249</strong></p>
+<hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
+<p><strong style="color:var(--white);">Opción 2 — Efectivo:</strong><br>Acércate a las oficinas de ventas de MVP Sport City y cancela en persona.</p>
+</div>
+</div>
+
+<button type="submit" class="submit-btn" id="submitBtn">
+<span id="btnText">Enviar Inscripción</span>
+<div class="spinner" id="spinner"></div>
+</button>
+
+<div class="error-msg" id="errorMsg">Ocurrió un error al enviar. Intenta de nuevo o contáctanos por WhatsApp.</div>
+</form>
+</div>
+
+<div class="footer">
+<strong>MVP Sport City</strong> × Panama Metro Baseball Club<br>Todos los derechos reservados · 2026
+</div>
+</div>
+
+<script>
+// IMPORTANTE: reemplaza esta URL por la de TU nueva implementación de Apps Script.
+const SHEET_URL = "PEGA_AQUI_LA_URL_DEL_APPS_SCRIPT";
+
+document.getElementById("tryoutForm").addEventListener("submit", async function(e) {
+e.preventDefault();
+const btn = document.getElementById("submitBtn");
+const btnText = document.getElementById("btnText");
+const spinner = document.getElementById("spinner");
+const errorMsg = document.getElementById("errorMsg");
+
+const expEl = document.querySelector('input[name="experiencia"]:checked');
+if (!expEl) { alert("Por favor indica si el jugador tiene experiencia previa."); return; }
+
+const payload = {
+nombre: document.getElementById("nombre").value.trim(),
+fechaNacimiento: document.getElementById("fechaNacimiento").value,
+cedula: document.getElementById("cedula").value.trim(),
+categoria: document.getElementById("categoria").value,
+posicion: document.getElementById("posicion").value,
+experiencia: expEl.value,
+tutor: document.getElementById("tutor").value.trim(),
+telefono: document.getElementById("telefono").value.trim(),
+email: document.getElementById("email").value.trim(),
+};
+
+btn.disabled = true; btnText.style.display = "none"; spinner.style.display = "block"; errorMsg.style.display = "none";
+
+try {
+const res = await fetch(SHEET_URL, {
+method: "POST",
+headers: { "Content-Type": "text/plain;charset=utf-8" },
+body: JSON.stringify(payload)
+});
+const data = await res.json();
+if (!data || data.ok !== true || !data.id) { throw new Error("Respuesta inválida del servidor"); }
+
+document.getElementById("tryoutForm").style.display = "none";
+document.getElementById("successScreen").style.display = "block";
+document.getElementById("successName").textContent = payload.nombre;
+document.getElementById("successEmail").textContent = payload.email;
+document.getElementById("successId").textContent = data.id;
+} catch (err) {
+btn.disabled = false; btnText.style.display = "block"; spinner.style.display = "none"; errorMsg.style.display = "block";
+}
+});
+</script>
+</body>
+</html>
